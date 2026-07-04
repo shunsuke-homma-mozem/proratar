@@ -37,16 +37,16 @@ df <- data.frame(
 df_allocated <- df |> 
   mutate(
     no_adjust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "none"),
-    each_ajust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "each"),
-    max_ajust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "max"),
+    each_adjust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "each"),
+    max_adjust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "max"),
     integer = prorate_int(total = 100, weights = vec_value, adjust = "each")
   )
 
 print(df_allocated)
-#   name vec_value no_adjust each_ajust max_ajust integer
-# 1    A         1       4.3        4.4       4.3       4
-# 2    B         2       8.7        8.7       8.7       9
-# 3    C         3      13.0       13.0      13.0      13
-# 4    D         4      17.4       17.4      17.4      17
-# 5    E        13      56.5       56.5      56.6      57
+#   name vec_value no_adjust each_adjust max_adjust integer
+# 1    A         1       4.3         4.4        4.3       4
+# 2    B         2       8.7         8.7        8.7       9
+# 3    C         3      13.0        13.0       13.0      13
+# 4    D         4      17.4        17.4       17.4      17
+# 5    E        13      56.5        56.5       56.6      57
 ```
