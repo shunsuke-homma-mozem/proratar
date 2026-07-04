@@ -15,7 +15,7 @@
 
 ## Installation
 
-You can install the official released version of **proratar** directly from CRAN:
+You can install the official released version of **proratar** from CRAN:
 
 ```r
 install.packages("proratar")
@@ -33,7 +33,7 @@ df <- data.frame(
     vec_value = c(1, 2, 3, 4, 13)
   )
 
-# Allocate target value(100) in propotion to vec_value
+# Allocate target value(100) in proportion to vec_value
 df_allocated <- df |> 
   mutate(
     no_adjust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "none"),
