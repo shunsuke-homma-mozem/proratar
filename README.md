@@ -19,3 +19,6 @@ You can install the official released version of **proratar** directly from CRAN
 
 ```r
 install.packages("proratar")
+
+
+```
