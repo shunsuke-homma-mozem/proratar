@@ -19,7 +19,11 @@ You can install the official released version of **proratar** directly from CRAN
 
 ```r
 install.packages("proratar")
+```
 
+## Quick Start
+
+```r
 library(proratar)
 
 # Sample dataframe
