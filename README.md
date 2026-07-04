@@ -20,5 +20,28 @@ You can install the official released version of **proratar** directly from CRAN
 ```r
 install.packages("proratar")
 
+library(proratar)
 
+# Sample dataframe
+df <- data.frame(
+    name = c("A", "B", "C", "D", "E"),
+    vec_value = c(1, 2, 3, 4, 13)
+  )
+
+# Allocate target value(100) in propotion to vec_value
+df_allocated <- df |> 
+  dplyr::mutate(
+    no_adjust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "none"),
+    each_ajust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "each"),
+    max_ajust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "max"),
+    integer = prorate_int(total = 100, weights = vec_value, adjust = "each")
+  )
+
+print(df_allocated)
+#   name vec_value no_adjust each_ajust max_ajust integer
+# 1    A         1       4.3        4.4       4.3       4
+# 2    B         2       8.7        8.7       8.7       9
+# 3    C         3      13.0       13.0      13.0      13
+# 4    D         4      17.4       17.4      17.4      17
+# 5    E        13      56.5       56.5      56.6      57
 ```
