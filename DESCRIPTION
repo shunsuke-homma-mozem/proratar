@@ -1,0 +1,12 @@
+Package: proratar
+Title: Proportional Allocation with Sum Consistency
+Version: 0.1.0
+Authors@R: person(given = "Shunsuke", family = "Homma", email = "shunsuke.homma@proton.me", role = c("aut", "cre"))
+Description: Provides robust functions for proportional allocation of numeric values. It guarantees sum consistency after rounding or integer truncation using one of two adjustment methods: the largest remainder method or max-value adjustment. Handles edge cases like NA weights and vector total values seamlessly.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
