@@ -25,6 +25,7 @@ install.packages("proratar")
 
 ```r
 library(proratar)
+library(dplyr)
 
 # Sample dataframe
 df <- data.frame(
@@ -34,7 +35,7 @@ df <- data.frame(
 
 # Allocate target value(100) in propotion to vec_value
 df_allocated <- df |> 
-  dplyr::mutate(
+  mutate(
     no_adjust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "none"),
     each_ajust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "each"),
     max_ajust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "max"),
