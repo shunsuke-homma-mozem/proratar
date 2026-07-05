@@ -34,7 +34,7 @@ df <- data.frame(
     target_value = c(100, 100, 100, 100, 100, 200, 200)
   )
 
-# Allocate target value(100) in proportion to vec_value
+# Allocate target values in proportion to vec_value
 df_allocated <- df |> 
   group_by(group) |> 
   mutate(
