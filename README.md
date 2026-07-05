@@ -29,24 +29,29 @@ library(dplyr)
 
 # Sample dataframe
 df <- data.frame(
-    name = c("A", "B", "C", "D", "E"),
-    vec_value = c(1, 2, 3, 4, 13)
+    group = c("A", "A", "A", "A", "A", "B", "B"),
+    vec_value = c(1, 2, 3, 4, 13, 1, 3),
+    target_value = c(100, 100, 100, 100, 100, 200, 200)
   )
 
 # Allocate target value(100) in proportion to vec_value
 df_allocated <- df |> 
+  group_by(group) |> 
   mutate(
-    no_adjust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "none"),
-    each_adjust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "each"),
-    max_adjust = prorate(total = 100, weights = vec_value, digits = 1, adjust = "max"),
-    integer = prorate_int(total = 100, weights = vec_value, adjust = "each")
+    no_adjust = prorate(total = target_value, weights = vec_value, digits = 1, adjust = "none"),
+    each_adjust = prorate(total = target_value, weights = vec_value, digits = 1, adjust = "each"),
+    max_adjust = prorate(total = target_value, weights = vec_value, digits = 1, adjust = "max"),
+    integer = prorate_int(total = target_value, weights = vec_value, adjust = "each")
   )
 
 print(df_allocated)
-#   name vec_value no_adjust each_adjust max_adjust integer
-# 1    A         1       4.3         4.4        4.3       4
-# 2    B         2       8.7         8.7        8.7       9
-# 3    C         3      13.0        13.0       13.0      13
-# 4    D         4      17.4        17.4       17.4      17
-# 5    E        13      56.5        56.5       56.6      57
+#   group vec_value target_value no_adjust each_adjust max_adjust integer
+#   <chr>     <dbl>        <dbl>     <dbl>       <dbl>      <dbl>   <int>
+# 1 A             1          100       4.3         4.4        4.3       4
+# 2 A             2          100       8.7         8.7        8.7       9
+# 3 A             3          100      13          13         13        13
+# 4 A             4          100      17.4        17.4       17.4      17
+# 5 A            13          100      56.5        56.5       56.6      57
+# 6 B             1          200      50          50         50        50
+# 7 B             3          200     150         150        150       150
 ```
